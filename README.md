@@ -31,4 +31,4 @@ AGPLv3+
 
 ## please Donate if you like this script
 ## BTC: 1L551kGQVnzjWjrQGjTkadgwR6sBf2wu14
-## BBR: @smic
+## BBR: @silvo
