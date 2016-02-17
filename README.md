@@ -2,7 +2,7 @@
 
 ## Installation & Configuration
 
-1. Copy the `boolb_*_*` scripts to `/usr/share/munin/plugins` then ` ln -s /usr/share/munin/plugins/boolb_*_* /etc/munin/plugins `
+1. Copy the `boolb_*` scripts to `/usr/share/munin/plugins` then ` ln -s /usr/share/munin/plugins/boolb_* /etc/munin/plugins `
 
 1. If you're using SELinux, don't forget to `chcon` them properly.
 
