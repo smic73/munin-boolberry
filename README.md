@@ -21,6 +21,8 @@ user root`
    
     Adapt it to your setup and avoid using `root`.
 
+Before install check every script and modify with your correct path. Ex: /home/mickey/.boolb
+
 1. Restart the *munin-node* daemon with `systemctl restart munin-node` or `/etc/init.d/munin-node restart`.
 
 1. Done. You should now start to see a new section *boolb* in your Munin pages with the corresponding graphs.
