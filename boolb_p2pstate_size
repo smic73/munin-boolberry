@@ -1,0 +1,54 @@
+#!/bin/sh
+# -*- sh -*-
+# vim: ft=sh
+
+: << =cut
+
+=head1 NAME
+
+boolb_p2pstate_size - Plugin to monitor the size of the p2pstate
+
+=head1 CONFIGURATION
+
+ [boolb_p2pstate_size]
+    user root
+    env.data_dir /home/your_user/.boolb/
+
+=head1 AUTHOR
+
+Cedric Felizard mod  Cryptonote and Boolberry by Michele Silvestri 2016 aka smic73
+
+=head1 LICENSE
+
+AGPLv3+
+
+=head1 MAGIC MARKERS
+
+ #%# family=auto
+ #%# capabilities=autoconf
+
+=cut
+
+DATA_DIR=${data_dir:-"/home/your_user/.boolb"}
+BLOCK_DIR="${DATA_DIR}/p2pstate.bin"
+
+if [ "$1" = "autoconf" ]; then
+    autoconf="yes"
+
+    [ -d $BLOCK_DIR ] || autoconf="no"
+
+    echo $autoconf
+    exit 0
+fi
+
+if [ "$1" = "config" ]; then
+    echo 'graph_title P2pstate size'
+    echo 'graph_vlabel size'
+    echo 'graph_category boolb'
+    echo 'graph_info This graph shows the size of the p2pstate in bytes.'
+    echo 'boolb_p2pstate_size.label size'
+    echo 'boolb_p2pstate_size.info The size of the p2pstate in bytes.'
+    exit 0
+fi
+
+echo "boolb_p2pstate_size.value $(du --block-size=1 -s $BLOCK_DIR | awk '{print $1}')"
