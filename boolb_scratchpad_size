@@ -1,0 +1,54 @@
+#!/bin/sh
+# -*- sh -*-
+# vim: ft=sh
+
+: << =cut
+
+=head1 NAME
+
+boolb_scratchpad_size - Plugin to monitor the size of the scratchpad
+
+=head1 CONFIGURATION
+
+ [boolb_scratchpad_size]
+    user root
+    env.data_dir /path_where_is_scratchpad_file/
+
+=head1 AUTHOR
+
+Cedric Felizard mod  Cryptonote and Boolberry by Michele Silvestri 2016 aka smic73
+
+=head1 LICENSE
+
+AGPLv3+
+
+=head1 MAGIC MARKERS
+
+ #%# family=auto
+ #%# capabilities=autoconf
+
+=cut
+
+DATA_DIR=${data_dir:-"/path_where_is_scratchpad_file"}
+BLOCK_DIR="${DATA_DIR}/scratchpad.bin"
+
+if [ "$1" = "autoconf" ]; then
+    autoconf="yes"
+
+    [ -d $BLOCK_DIR ] || autoconf="no"
+
+    echo $autoconf
+    exit 0
+fi
+
+if [ "$1" = "config" ]; then
+    echo 'graph_title Scratchpad size'
+    echo 'graph_vlabel size'
+    echo 'graph_category boolb'
+    echo 'graph_info This graph shows the size of the scratchpad in bytes.'
+    echo 'boolb_scratchpad_size.label size'
+    echo 'boolb_scratchpad_size.info The size of the blockchain in bytes.'
+    exit 0
+fi
+
+echo "boolb_scratchpad_size.value $(du --block-size=1 -s $BLOCK_DIR | awk '{print $1}')"
