@@ -34,5 +34,5 @@ Released under the GNU General Public License v2
 http://www.gnu.org/licenses/gpl-2.0.html
 
 ## please Donate if you like this script
-## BTC: 1L551kGQVnzjWjrQGjTkadgwR6sBf2wu14
+## BTC: 367ABBLhxkYzwimXtGtUkU4ksFWRz4h6KN
 ## BBR: @silvo
